@@ -4,6 +4,7 @@ RD=`echo "\033[01;31m"`
 BL=`echo "\033[36m"`
 GN=`echo "\033[1;92m"`
 CL=`echo "\033[m"`
+var_user="oli"
 RETRY_NUM=10
 RETRY_EVERY=3
 NUM=$RETRY_NUM
@@ -55,6 +56,10 @@ msg_ok "Set up Container OS"
 msg_ok "Network Connected: ${BL}$(hostname -I)"
 
 msg_info "Updating Container OS"
+
+msg_info "Adding host user"
+useradd $var_user
+
 apt update &>/dev/null
 apt-get -qqy upgrade &>/dev/null
 msg_ok "Updated Container OS"
